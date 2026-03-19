@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FuelStatus from "./FuelStatus";
 import NumberSelector from "./NumberSelector";
+import Footer from "./Footer";
 import "./App.css";
 
 function App() {
@@ -11,21 +12,24 @@ function App() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-			<div className="max-w-md mx-auto">
-				<header className="text-center mb-8 pt-8">
-					<h1 className="text-3xl font-bold text-gray-800 mb-2">
-						⛽ Fuel Quota Checker
-					</h1>
-					<p className="text-gray-600">Sri Lanka Fuel Availability</p>
-				</header>
+		<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+			<div className="flex-1 p-4">
+				<div className="max-w-md mx-auto">
+					<header className="text-center mb-8 pt-8">
+						<h1 className="text-3xl font-bold text-gray-800 mb-2">
+							⛽ Fuel Quota Checker
+						</h1>
+						<p className="text-gray-600">Sri Lanka Fuel Availability</p>
+					</header>
 
-				{selectedDigit === null ? (
-					<NumberSelector onSelect={setSelectedDigit} />
-				) : (
-					<FuelStatus digit={selectedDigit} onReset={handleReset} />
-				)}
+					{selectedDigit === null ? (
+						<NumberSelector onSelect={setSelectedDigit} />
+					) : (
+						<FuelStatus digit={selectedDigit} onReset={handleReset} />
+					)}
+				</div>
 			</div>
+			<Footer />
 		</div>
 	);
 }
